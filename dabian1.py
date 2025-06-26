@@ -38,8 +38,10 @@ if not api_key:
     st.error('🔒 请提供API KEY以继续使用服务', icon='⚠️')
     st.stop()
 
+#// 修改聊天消息样式
 for role, content in st.session_state['messages']:
-    st.chat_message(role).write(content)
+    with st.chat_message(role):
+        st.markdown(f"<div style='padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>{content}</div>", unsafe_allow_html=True)
 
 user_input = st.chat_input(placeholder='请描述你的日常生活安排需求，例如“明天一天的安排，我想健身和购物”')
 if user_input:
