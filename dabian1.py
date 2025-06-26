@@ -55,3 +55,12 @@ if user_input:
         result = ''.join(answer)
         st.chat_message('ai').write(result)
         st.session_state['messages'].append(('ai', result))
+
+# 在侧边栏添加用户反馈区域
+with st.sidebar:
+    st.markdown("### 用户反馈 📝", unsafe_allow_html=True)
+    feedback_rating = st.slider("请评价本次服务体验：⭐", 1, 5, 3, help="1星表示非常不满意，5星表示非常满意")
+    feedback_text = st.text_area("请输入您的反馈意见：💬", placeholder="例如：功能很实用，但希望增加更多模板...")
+    if st.button("提交反馈 ✅"):
+        st.success("感谢您的宝贵反馈！我们会认真改进 😊")
+        # 这里可以添加反馈数据的存储逻辑
